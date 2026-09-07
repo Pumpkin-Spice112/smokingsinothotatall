@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>艸加於無火之害 🚬 | 菸害防制互動專題</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#e53e3e',
+                            darkRed: '#9b2c2c',
+                            grayBg: '#f8fafc',
+                            cardBg: '#ffffff',
+                            border: '#e2e8f0',
+                            textDark: '#1a202c',
+                            textMuted: '#64748b'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #f8fafc;
+            color: #1a202c;
+            overflow-x: hidden;
+        }
+        .white-card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #e53e3e 0%, #9b2c2c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        #gameCanvas {
+            background: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-red-500 selection:text-white">
+
+    <!-- 頂部導航欄 -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <span class="text-2xl animate-bounce">🚬</span>
+                <span class="font-black text-xl tracking-wider text-slate-800">艸加於無火之害</span>
+            </div>
+            <nav class="hidden md:flex space-x-6 text-sm font-medium text-slate-600">
+                <a href="#intro" class="hover:text-red-600 transition flex items-center gap-1">🐱 爭議事件</a>
+                <a href="#trends" class="hover:text-red-600 transition flex items-center gap-1">📊 數據現實</a>
+                <a href="#types" class="hover:text-red-600 transition flex items-center gap-1">💨 菸害類型</a>
+                <a href="#economy" class="hover:text-red-600 transition flex items-center gap-1">💰 經濟衝擊</a>
+                <a href="#vape" class="hover:text-red-600 transition flex items-center gap-1">⚠️ 新興陷阱</a>
+                <a href="#ending" class="hover:text-red-600 transition flex items-center gap-1">🚭 終局之戰</a>
+                <a href="#game-section" class="hover:text-red-600 transition flex items-center gap-1">🎮 互動小遊戲</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主視覺區塊 -->
+    <section id="intro" class="relative min-h-screen flex items-center justify-center px-6 pt-24 pb-16">
+        <div class="max-w-4xl mx-auto text-center z-10" data-aos="fade-up">
+            <span class="inline-flex items-center gap-1.5 px-4 py-1.5 mb-6 text-xs font-bold tracking-widest text-red-600 uppercase bg-red-50 border border-red-200 rounded-full">
+                🚨 文化現象的警鐘
+            </span>
+            <h1 class="text-4xl md:text-6xl font-900 tracking-tight mb-6 text-slate-900 leading-tight">
+                當可愛外表 <span class="text-2xl md:text-4xl">🐱</span><br>
+                包裝了致命成癮 <span class="gradient-text">🚬💨</span>
+            </h1>
+            <p class="text-base md:text-xl text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-normal">
+                從日本動畫《尼古喵喵》下架爭議談起 🐾，解構新時代下的菸害危機、家庭暴露與全球禁菸終局之戰。
+            </p>
+
+            <!-- 爭議事件卡片 -->
+            <div class="white-card p-6 md:p-8 rounded-3xl text-left max-w-3xl mx-auto border-l-8 border-l-red-500">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <span>🐱🚨</span> 《尼古喵喵》(Yanineko) 爭議事件
+                    </h3>
+                    <span class="text-xs font-semibold text-red-600 bg-red-50 border border-red-200 px-3 py-1 rounded-full">預防性下架</span>
+                </div>
+                <p class="text-sm md:text-base text-slate-600 mb-6 leading-relaxed">
+                    因反覆、清晰展示真實菸品品牌與特寫 🚬，2026年8月遭台灣及香港串流平台全面預防性下架。引發家長與防制團體抗議，擔憂將吸菸與角色魅力產生連結 ⚠️。
+                </p>
+                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                    <h4 class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-3 flex items-center gap-1">
+                        🏛️ 衛福部國健署復播要求條件：
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs md:text-sm font-medium text-slate-700">
+                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-red-500 font-bold">1️⃣</span> 品牌名稱進行遮蔽或模糊處理 🔍
+                        </div>
+                        <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-slate-200">
+                            <span class="text-red-500 font-bold">2️⃣</span> 吸菸畫面依法加註「警語」 ⚠️
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 數據背後的現實與互動圖表 -->
+    <section id="trends" class="py-20 px-6 max-w-6xl mx-auto border-t border-slate-200">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900">📊 數據背後的現實</h2>
+            <p class="text-slate-500">全球與台灣的菸害趨勢與防制瓶頸</p>
+        </div>
+
+        <!-- 全球與台灣重點指標卡片 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <div class="white-card p-8 rounded-3xl relative overflow-hidden" data-aos="fade-right">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">🌍</span>
+                    <h3 class="text-xl font-bold text-slate-900">全球菸害代價</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="border-b border-slate-100 pb-4">
+                        <div class="text-4xl font-black text-red-600 mb-1">800 萬人 <span class="text-xs font-normal text-slate-500">/ 年過早死亡</span></div>
+                        <p class="text-xs text-slate-600">含 700 萬直接吸菸者 + 130 萬二手菸受害者 ⚰️</p>
+                    </div>
+                    <p class="text-xs text-slate-500">亞洲與東歐地區的致死率仍高居全球之冠。</p>
+                </div>
+            </div>
+
+            <div class="white-card p-8 rounded-3xl relative overflow-hidden" data-aos="fade-left">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="text-3xl">🇹🇼</span>
+                    <h3 class="text-xl font-bold text-slate-900">台灣趨勢與瓶頸</h3>
+                </div>
+                <div class="space-y-4">
+                    <div class="border-b border-slate-100 pb-4">
+                        <div class="text-4xl font-black text-slate-800 mb-1">12.8% <span class="text-xs font-normal text-slate-500">(2024成人吸菸率)</span></div>
+                        <p class="text-xs text-slate-600">較 2008 年 (21.9%) 下降逾四成，但近年已呈「降幅停滯」📉</p>
+                    </div>
+                    <p class="text-xs text-slate-500">傳統菸品降幅有限，加上新興菸品挑戰，面臨全新防制瓶頸。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 圖表區 1: 年齡與性別吸菸率 -->
+        <div class="white-card p-6 md:p-8 rounded-3xl" data-aos="fade-up">
+            <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                <div>
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">👥 成癮的年齡輪廓：誰在抽菸？</h3>
+                    <p class="text-xs text-slate-500">台灣不同年齡層與性別之吸菸率分佈</p>
+                </div>
+                <span class="text-xs font-semibold bg-slate-100 text-slate-600 px-3 py-1 rounded-full border border-slate-200">資料來源：Our World in Data</span>
+            </div>
+
+            <!-- Chart.js 容器 -->
+            <div class="relative h-72 md:h-80 w-full">
+                <canvas id="ageGenderChart"></canvas>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                <div class="bg-red-50 p-4 rounded-2xl border border-red-100">
+                    <span class="text-xs font-bold text-red-600 uppercase tracking-wider">👨 男性吸菸率顛峰</span>
+                    <div class="text-2xl font-black text-slate-900 my-1">50-64 歲 <span class="text-red-600 font-bold text-xl">22.7%</span></div>
+                    <p class="text-xs text-slate-600">近 1/4 的該年齡層男性為吸菸者 🚬</p>
+                </div>
+                <div class="bg-slate-100 p-4 rounded-2xl border border-slate-200">
+                    <span class="text-xs font-bold text-slate-600 uppercase tracking-wider">👩 女性吸菸率顛峰</span>
+                    <div class="text-2xl font-black text-slate-900 my-1">40-49 歲 <span class="text-slate-800 font-bold text-xl">7.2%</span></div>
+                    <p class="text-xs text-slate-600">約每 14 位該年齡層女性有 1 位吸菸 🚬</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 菸害類型 (1~3 型) & 家庭影響 -->
+    <section id="types" class="py-20 px-6 bg-slate-100/60 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900">💨 菸之呼吸：1 ~ 3 型菸害</h2>
+                <p class="text-slate-500">無所不在的毒素擴散，威脅無辜生命</p>
+            </div>
+
+            <!-- 三種菸害卡片 -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+                <div class="white-card p-6 rounded-3xl border-t-4 border-t-slate-700" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-slate-500 uppercase tracking-wider">Type 01</span>
+                        <span class="text-2xl">🚬</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">一手菸 (1st-hand)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed">
+                        吸菸者直接吸入肺部的毒素與致癌物 🫁，對自身器官造成最直接且嚴重的破壞。
+                    </p>
+                </div>
+
+                <div class="white-card p-6 rounded-3xl border-t-4 border-t-red-500" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-red-500 uppercase tracking-wider">Type 02</span>
+                        <span class="text-2xl">💨</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">二手菸 (2nd-hand)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        燃燒與呼出的煙霧，<strong>無安全劑量</strong>！每年致全球 130 萬非吸菸者無辜喪命 ⚰️。
+                    </p>
+                    <span class="inline-block text-xs bg-red-50 text-red-600 font-medium px-2.5 py-1 rounded-md border border-red-200">
+                        ⚠️ 空調與通風設備皆無法有效隔絕
+                    </span>
+                </div>
+
+                <div class="white-card p-6 rounded-3xl border-t-4 border-t-slate-900" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Type 03</span>
+                        <span class="text-2xl">🛋️</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">三手菸 (3rd-hand)</h3>
+                    <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                        殘留於衣服、地板、家具表面的毒性微粒，含有至少 11 種高度致癌化合物 🧪。
+                    </p>
+                    <span class="inline-block text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md border border-slate-300">
+                        👶 爬行嬰幼兒氣喘與血癌極高風險
+                    </span>
+                </div>
+            </div>
+
+            <!-- 家庭二手菸暴露互動圖表 -->
+            <div class="white-card p-6 md:p-8 rounded-3xl grid grid-cols-1 md:grid-cols-12 gap-8 items-center" data-aos="fade-up">
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl">👶🏠</span>
+                        <h3 class="text-xl font-bold text-slate-900">菸害與家庭：下一代的無奈</h3>
+                    </div>
+                    <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-4">
+                        超過三分之一的台灣家庭讓下一代在日常中被迫吸菸。數據顯示，幼兒在成長至 8 歲前，暴露率始終維持在 50% 以上 💔。
+                    </p>
+                    <div class="space-y-3">
+                        <div class="bg-red-50 p-3 rounded-xl border border-red-100">
+                            <div class="text-2xl font-black text-red-600">55.3%</div>
+                            <div class="text-xs text-slate-600">台灣 18 個月大幼兒二手菸暴露率 👶</div>
+                        </div>
+                        <div class="bg-slate-100 p-3 rounded-xl border border-slate-200">
+                            <div class="text-2xl font-black text-slate-800">35.6%</div>
+                            <div class="text-xs text-slate-600">2024 年台灣家庭二手菸總暴露率 🏠</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="md:col-span-7 flex flex-col items-center justify-center">
+                    <h4 class="text-xs font-bold text-slate-500 mb-4">🏠 台灣家庭與幼兒二手菸受害比例圖示</h4>
+                    <div class="relative h-64 w-full max-w-sm">
+                        <canvas id="familyExposureChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 經濟衝擊與個人損失 -->
+    <section id="economy" class="py-20 px-6 max-w-6xl mx-auto border-t border-slate-200">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900">💰 經濟衝擊與個人損失</h2>
+            <p class="text-slate-500">吸菸不僅燃燒健康，更掏空國家與個人的財富</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="white-card p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="100">
+                <span class="text-4xl block mb-2">💸</span>
+                <div class="text-3xl font-black text-red-600 mb-1">逾 1,300 億</div>
+                <h4 class="font-bold text-slate-800 text-sm mb-2">每年勞動力損失 (新台幣)</h4>
+                <p class="text-xs text-slate-500">因吸菸導致勞動力折損與生產力流失高達 46 億美元 📉。</p>
+            </div>
+            <div class="white-card p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="200">
+                <span class="text-4xl block mb-2">📈</span>
+                <div class="text-3xl font-black text-slate-800 mb-1">0.6% <span class="text-xs font-normal text-slate-500">GDP</span></div>
+                <h4 class="font-bold text-slate-800 text-sm mb-2">佔國家產值比例</h4>
+                <p class="text-xs text-slate-500">龐大經濟流失約占台灣國內生產毛額 (GDP) 的 0.6%。</p>
+            </div>
+            <div class="white-card p-6 rounded-3xl text-center" data-aos="fade-up" data-aos-delay="300">
+                <span class="text-4xl block mb-2">🏥</span>
+                <div class="text-3xl font-black text-red-600 mb-1">&gt; 15%</div>
+                <h4 class="font-bold text-slate-800 text-sm mb-2">超越健保總支出</h4>
+                <p class="text-xs text-slate-500">生產力流失規模遠超健保 15%，吸菸財政負擔遠高於菸稅收益 ⚖️。</p>
+            </div>
+        </div>
+
+        <!-- 個人終生損失 -->
+        <div class="white-card p-6 md:p-8 rounded-3xl" data-aos="fade-up">
+            <h3 class="text-xl font-bold text-slate-900 mb-6 text-center flex items-center justify-center gap-2">
+                <span>📉</span> 生命與財富的雙重折損：個人終生損失
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-red-600 mb-4 flex items-center gap-2">👨 男性吸菸者 (Male Smokers)</h4>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="text-slate-500">⏳ 壽命折損</span> <strong class="text-slate-900">減少約 2.0 年</strong>
+                        </li>
+                        <li class="flex justify-between pt-1">
+                            <span class="text-slate-500">💵 終生薪資流失</span> <strong class="text-red-600">45,572 美元 (約 NT$135 萬)</strong>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-4 flex items-center gap-2">👩 女性吸菸者 (Female Smokers)</h4>
+                    <ul class="space-y-3 text-sm text-slate-700">
+                        <li class="flex justify-between border-b border-slate-200 pb-2">
+                            <span class="text-slate-500">⏳ 壽命折損</span> <strong class="text-slate-900">減少約 1.4 年</strong>
+                        </li>
+                        <li class="flex justify-between pt-1">
+                            <span class="text-slate-500">💵 終生薪資流失</span> <strong class="text-red-600">61,552 美元 (約 NT$185 萬)</strong>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新興菸品陷阱 -->
+    <section id="vape" class="py-20 px-6 bg-slate-100/60 border-t border-slate-200">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900">⚠️ 新興的潛在危機：電子煙與加熱菸</h2>
+                <p class="text-slate-500">口味包裝與高隱蔽性，正在誘捕年輕世代</p>
+            </div>
+
+            <!-- 新增：國健署回收專用桶政策公告 -->
+            <div class="white-card p-6 rounded-3xl mb-8 border-l-8 border-l-emerald-500" data-aos="fade-up">
+                <div class="flex items-center gap-3 mb-3">
+                    <span class="text-3xl">🗑️</span>
+                    <div>
+                        <h3 class="text-lg font-bold text-slate-900">衛福部國健署宣導：電子煙回收專用桶政策</h3>
+                        <p class="text-xs text-emerald-600 font-semibold">自 2026 年 9 月 8 日起正式上路</p>
+                    </div>
+                </div>
+                <p class="text-xs md:text-sm text-slate-600 leading-relaxed mb-3">
+                    為降低廢棄電子煙及加熱菸載具對環境造成的二次危害與化學物質殘留，國健署於 <strong>9 月 8 日起於全台新增 431 處電子煙回收專用桶</strong>。希望持有的民眾可以主動自主投遞，妥善處置廢棄設備，共同維持環境健康與安全。
+                </p>
+                <div class="inline-flex items-center gap-2 text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-lg">
+                    💡 溫馨提醒：請攜帶廢棄電子煙或加熱菸載具至指定據點進行自主投遞！
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                <div class="md:col-span-5 space-y-6" data-aos="fade-right">
+                    <div class="white-card p-6 rounded-3xl">
+                        <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">🚨 青少年電子煙暴增警訊</h3>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-4">
+                            青少年電子煙使用率在短短 3 年間（2018-2021）從 <strong class="text-slate-800">2.7%</strong> 暴增至 <strong class="text-red-600 text-base">6.6%</strong>！
+                        </p>
+                        <div class="bg-red-50 p-3 rounded-xl border border-red-100 text-xs text-red-700 font-medium">
+                            🎯 新興客群轉移：18-29歲年輕女性 (1.1%)、40-49歲中年男性 (1.8%)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 互動圖表 3: 成癮誘因極座標雷達圖 -->
+                <div class="md:col-span-7 white-card p-6 rounded-3xl" data-aos="fade-left">
+                    <h3 class="text-base font-bold text-slate-900 mb-2 text-center">🎯 包裝在好奇心下的陷阱：成癮誘因解構</h3>
+                    <div class="relative h-64 w-full">
+                        <canvas id="vapeReasonChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 終局之戰：禁菸世代政策比較 -->
+    <section id="ending" class="py-20 px-6 max-w-6xl mx-auto border-t border-slate-200">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-3 text-slate-900">🚭 終局之戰：全球「禁菸世代」政策比較</h2>
+            <p class="text-slate-500">各國立法取締與禁菸藍圖的挑戰與成敗</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="white-card p-6 rounded-3xl border-t-4 border-t-emerald-500" data-aos="fade-up" data-aos-delay="100">
+                <span class="text-xs font-bold bg-emerald-50 text-emerald-700 px-3 py-1 rounded-full border border-emerald-200">🇬🇧 英國 (UK) - 已立法 (2024)</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-4 mb-2">終身禁買菸品</h3>
+                <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                    禁止販售菸品給 2008 年 (含) 以後出生者。具備強大社會共識，成為全球禁菸世代指標國 📜。
+                </p>
+            </div>
+
+            <div class="white-card p-6 rounded-3xl border-t-4 border-t-amber-500 shadow-lg" data-aos="fade-up" data-aos-delay="200">
+                <span class="text-xs font-bold bg-amber-50 text-amber-700 px-3 py-1 rounded-full border border-amber-200">🇹🇼 台灣 (Taiwan) - 逕付二讀</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-4 mb-2">修正草案推進中</h3>
+                <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                    立委提案修法禁止供應菸品給民國 98 年 (2009年) 起出生者 🚫，違者罰款 1 萬至 25 萬元。國健署持續評估中。
+                </p>
+            </div>
+
+            <div class="white-card p-6 rounded-3xl border-t-4 border-t-red-500" data-aos="fade-up" data-aos-delay="300">
+                <span class="text-xs font-bold bg-red-50 text-red-700 px-3 py-1 rounded-full border border-red-200">🇳🇿 紐西蘭 (NZ) - 已廢除</span>
+                <h3 class="text-lg font-bold text-slate-900 mt-4 mb-2">政策逆轉與宣告失敗</h3>
+                <p class="text-xs text-slate-600 mb-4 leading-relaxed">
+                    原為全球首個推動國家，因政黨輪替、擔憂菸稅收入損失及黑市走私猖獗而宣告廢除 (Repealed) ⚠️。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 新增：互動小遊戲區塊 -->
+    <section id="game-section" class="py-20 px-6 bg-slate-900 text-white border-t border-slate-800">
+        <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+            <span class="inline-block px-3 py-1 bg-red-500 text-white rounded-full text-xs font-bold mb-4">🎮 互動小遊戲</span>
+            <h2 class="text-3xl md:text-4xl font-black mb-2">肺部保衛戰：拒絕菸害！</h2>
+            <p class="text-slate-400 text-sm mb-6">移動底部的肺部籃子，收集「新鮮空氣 🍎🥦💧」，避開掉落的「菸害毒素 🚬💨⚠️」！</p>
+            
+            <div class="relative inline-block max-w-full">
+                <!-- 遊戲面板 -->
+                <canvas id="gameCanvas" width="400" height="400" class="rounded-2xl mx-auto shadow-2xl"></canvas>
+                
+                <!-- 遊戲開始/重新開始按鈕遮罩 -->
+                <div id="gameOverlay" class="absolute inset-0 bg-slate-900/90 rounded-2xl flex flex-col items-center justify-center p-6">
+                    <h3 id="gameOverlayTitle" class="text-2xl font-bold mb-2">🫁 準備好保護你的肺了嗎？</h3>
+                    <p id="gameOverlayDesc" class="text-xs text-slate-300 mb-6">得分達 100 分即可挑戰成功！</p>
+                    <button id="startGameBtn" onclick="startGame()" class="px-6 py-3 bg-red-600 hover:bg-red-500 text-white font-bold rounded-full transition-transform active:scale-95 shadow-lg">
+                        開始遊戲 ▶️
+                    </button>
+                </div>
+            </div>
+
+            <div class="mt-4 flex justify-center gap-6 text-xs text-slate-400">
+                <span>🟢 增加健康值：🍎 🥦 💧 🌿</span>
+                <span>🔴 扣除健康值：🚬 💨 ⚠️</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-white border-t border-slate-200 py-10 text-center text-xs text-slate-500">
+        <p class="mb-2">📚 資料來源：Our World in Data、衛生福利部國民健康署、今日北醫電子報</p>
+        <p>艸加於無火之害 - 菸害防制互動專題 © 2026 🚬🚭</p>
+    </footer>
+
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // 1. 年齡與性別吸菸率圖表 (Chart.js)
+        const ctx1 = document.getElementById('ageGenderChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['15-24歲', '25-39歲', '40-49歲', '50-64歲', '65歲以上'],
+                datasets: [
+                    {
+                        label: '👨 男性吸菸率 (%)',
+                        data: [8.5, 18.2, 21.0, 22.7, 11.4],
+                        backgroundColor: '#ef4444',
+                        borderRadius: 6
+                    },
+                    {
+                        label: '👩 女性吸菸率 (%)',
+                        data: [1.2, 3.5, 7.2, 4.1, 1.8],
+                        backgroundColor: '#64748b',
+                        borderRadius: 6
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: { callback: value => value + '%' }
+                    }
+                }
+            }
+        });
+
+        // 2. 家庭與幼兒二手菸受害比例 (Chart.js)
+        const ctx2 = document.getElementById('familyExposureChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                labels: ['18個月幼兒暴露率 (55.3%)', '台灣家庭總暴露率 (35.6%)', '無暴露風險環境 (8.9%)'],
+                datasets: [{
+                    data: [55.3, 35.6, 9.1],
+                    backgroundColor: ['#ef4444', '#f97316', '#cbd5e1'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 3. 新興菸品誘因雷達圖 (Chart.js)
+        const ctx3 = document.getElementById('vapeReasonChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'polarArea',
+            data: {
+                labels: ['🍓 好奇心/特調風味 (46.3%)', '👥 同儕影響/社交 (14.8%)', '🥷 隱蔽性高/無異味 (11.7%)', '其他因素 (27.2%)'],
+                datasets: [{
+                    data: [46.3, 14.8, 11.7, 27.2],
+                    backgroundColor: [
+                        'rgba(239, 68, 68, 0.7)',
+                        'rgba(245, 158, 11, 0.7)',
+                        'rgba(100, 116, 139, 0.7)',
+                        'rgba(203, 213, 225, 0.7)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        // 4. 互動小遊戲邏輯 (Canvas Game)
+        const canvas = document.getElementById('gameCanvas');
+        const gCtx = canvas.getContext('2d');
+        let gameAnimationId;
+        let score = 0;
+        let health = 100;
+        let isGaming = false;
+
+        const player = {
+            x: 175,
+            y: 350,
+            width: 50,
+            height: 40,
+            icon: '🫁'
+        };
+
+        const items = [];
+        const goodIcons = ['🍎', '🥦', '💧', '🌿', '🥗'];
+        const badIcons = ['🚬', '💨', '⚠️', '🔥'];
+
+        // 滑鼠與觸控監聽
+        function handleMove(e) {
+            if (!isGaming) return;
+            const rect = canvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            let newX = clientX - rect.left - player.width / 2;
+            if (newX < 0) newX = 0;
+            if (newX > canvas.width - player.width) newX = canvas.width - player.width;
+            player.x = newX;
+        }
+
+        canvas.addEventListener('mousemove', handleMove);
+        canvas.addEventListener('touchmove', handleMove);
+
+        function spawnItem() {
+            if (Math.random() < 0.05) {
+                const isGood = Math.random() > 0.4;
+                const iconList = isGood ? goodIcons : badIcons;
+                items.push({
+                    x: Math.random() * (canvas.width - 30),
+                    y: -30,
+                    speed: 2 + Math.random() * 3,
+                    isGood: isGood,
+                    icon: iconList[Math.floor(Math.random() * iconList.length)]
+                });
+            }
+        }
+
+        function updateGame() {
+            gCtx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 繪製玩家
+            gCtx.font = '32px sans-serif';
+            gCtx.fillText(player.icon, player.x, player.y + 30);
+
+            // 處理掉落物
+            spawnItem();
+            for (let i = items.length - 1; i >= 0; i--) {
+                const item = items[i];
+                item.y += item.speed;
+
+                // 繪製物品
+                gCtx.fillText(item.icon, item.x, item.y);
+
+                // 碰撞檢測
+                if (
+                    item.y >= player.y - 10 &&
+                    item.y <= player.y + player.height &&
+                    item.x >= player.x - 20 &&
+                    item.x <= player.x + player.width
+                ) {
+                    if (item.isGood) {
+                        score += 10;
+                    } else {
+                        health -= 20;
+                    }
+                    items.splice(i, 1);
+                    continue;
+                }
+
+                // 超出邊界移除
+                if (item.y > canvas.height) {
+                    items.splice(i, 1);
+                }
+            }
+
+            // 繪製分數與血條
+            gCtx.fillStyle = '#0f172a';
+            gCtx.font = 'bold 14px sans-serif';
+            gCtx.fillText(`分數: ${score}`, 10, 25);
+            gCtx.fillText(`肺部健康: ${health}%`, 280, 25);
+
+            // 判斷遊戲結束
+            if (health <= 0) {
+                endGame(false);
+                return;
+            } else if (score >= 100) {
+                endGame(true);
+                return;
+            }
+
+            if (isGaming) {
+                gameAnimationId = requestAnimationFrame(updateGame);
+            }
+        }
+
+        function startGame() {
+            score = 0;
+            health = 100;
+            items.length = 0;
+            isGaming = true;
+            document.getElementById('gameOverlay').classList.add('hidden');
+            updateGame();
+        }
+
+        function endGame(isWin) {
+            isGaming = false;
+            cancelAnimationFrame(gameAnimationId);
+            const overlay = document.getElementById('gameOverlay');
+            const title = document.getElementById('gameOverlayTitle');
+            const desc = document.getElementById('gameOverlayDesc');
+            const btn = document.getElementById('startGameBtn');
+
+            overlay.classList.remove('hidden');
+            if (isWin) {
+                title.innerText = '🎉 挑戰成功！';
+                desc.innerText = `你成功保護了肺部！最終得分：${score}`;
+            } else {
+                title.innerText = '💔 肺部受損！';
+                desc.innerText = '菸害毒素過多，再試一次保護健康吧！';
+            }
+            btn.innerText = '再玩一次 🔄';
+        }
+    </script>
+</body>
+</html>
